@@ -1,0 +1,8 @@
+SELECT
+  channelGrouping,
+  COUNT(DISTINCT fullVisitorId) AS unique_visitors,
+  SUM(totals.transactions) AS total_transactions,
+  SUM(totals.transactionRevenue) / 1000000 AS total_revenue
+FROM bigquery-public-data.google_analytics_sample.ga_sessions_20160801
+GROUP BY channelGrouping
+ORDER BY total_revenue DESC;
